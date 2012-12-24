@@ -12,14 +12,17 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.database.sqlite.SQLiteDatabase;
 import android.view.View;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.MenuInflater;
 import java.util.Calendar;
 
 public class MainActivity extends Activity implements OnItemSelectedListener
 {
 
 private FeeManipulator fm;
-private EditText name;
-private EditText fee;
+//private EditText name;
+//private EditText fee;
 private EditText date;
 private Spinner payToSpinner;
 private Spinner monthSpinner;
@@ -128,6 +131,30 @@ private static String selectedMonth="";
         }
         ha.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         history.setAdapter(ha);
+    }
+    
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+    	MenuInflater inflater=getMenuInflater();
+    	inflater.inflate(R.menu.main, menu);
+    	return true;
+    }
+    
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item){
+    Intent intent=null;
+    	switch(item.getItemId()){
+    		case R.id.itemAddTuition:
+    			intent=new Intent(this, AddTuitionActivity.class);
+    			startActivity(intent);
+    			return true;
+    		case R.id.itemPayTuition:
+    			return true;
+    		case R.id.itemQuit:
+    		default:
+    			return true;
+    	}
+    	return false;
     }
 
 }

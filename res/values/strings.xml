@@ -5,6 +5,7 @@
     <string name="edit_fee">{Fee}</string>
     <string name="edit_month">{Month}</string>
     <string name="edit_date">{Date}</string>
+    <string name="titleAddTuition">Add a new Tuition</string>
     <string-array name="months_array">
         <item>Jan</item>
         <item>Feb</item>
