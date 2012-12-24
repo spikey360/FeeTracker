@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:id="@+id/itemAddTuition"
+    	  android:icon="@drawable/addicon"
           android:title="Add Tuition" >
     </item>
     <item android:id="@+id/itemPayTuition"
+	  android:icon="@drawable/payicon"
 	  android:title="Pay to Tuition" >
     </item>
 	
 	<item android:id="@+id/itemQuit"
+	      android:icon="@drawable/quiticon"
 	      android:title="Quit">
 	</item>
 </menu>
