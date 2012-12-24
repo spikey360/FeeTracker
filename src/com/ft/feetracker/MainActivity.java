@@ -37,8 +37,8 @@ private static String selectedMonth="";
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
         
-        name=(EditText)findViewById(R.id.edit_msg_text);
-        fee=(EditText)findViewById(R.id.edit_fee_text);
+        //name=(EditText)findViewById(R.id.edit_msg_text);
+        //fee=(EditText)findViewById(R.id.edit_fee_text);
         date=(EditText)findViewById(R.id.edit_date);
         payToSpinner=(Spinner)findViewById(R.id.tuition_spinner);
         monthSpinner=(Spinner)findViewById(R.id.month_spinner);
@@ -89,14 +89,6 @@ private static String selectedMonth="";
         //payToSpinner.setOnItemSelectedListener(this);
     }
     
-    public void insertTuition(View view){
-    	fm.addTuition(name.getText().toString(),Integer.parseInt(fee.getText().toString()),"Tuition");
-    	//give a toast message
-    	Toast.makeText(getApplicationContext(),"Added "+name.getText().toString(),Toast.LENGTH_SHORT).show();
-    	populateTuitions();
-    	name.setText(new String(""),TextView.BufferType.EDITABLE);
-    	fee.setText(new String(""),TextView.BufferType.EDITABLE);
-    }
     
     public void payTuition(View view){
     	selectedTuition=payToSpinner.getSelectedItem().toString();
