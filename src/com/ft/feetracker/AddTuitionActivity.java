@@ -6,6 +6,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 import android.widget.TextView;
 import android.database.sqlite.SQLiteDatabase;
+import android.view.View;
 
 
 public class AddTuitionActivity extends Activity{
@@ -17,7 +18,7 @@ private EditText fee;
 @Override
 public void onCreate(Bundle savedInstanceState){
 	super.onCreate(savedInstanceState);
-	setContentView(R.layout.addTuition);
+	setContentView(R.layout.addtuition);
 	
 	name=(EditText)	findViewById(R.id.editNewTuitionName);
 	fee=(EditText)findViewById(R.id.editNewTuitionFee);

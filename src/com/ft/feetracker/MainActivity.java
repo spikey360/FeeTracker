@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MenuInflater;
+import android.content.Intent;
 import java.util.Calendar;
 
 public class MainActivity extends Activity implements OnItemSelectedListener
@@ -151,10 +152,12 @@ private static String selectedMonth="";
     		case R.id.itemPayTuition:
     			return true;
     		case R.id.itemQuit:
-    		default:
+    			finish();
     			return true;
+    		default:
+    			return false;
     	}
-    	return false;
+    	//return false;
     }
 
 }
