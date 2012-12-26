@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+	android:id="@+id/widget32"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	xmlns:android="http://schemas.android.com/apk/res/android"
+>
+<LinearLayout
+	android:id="@+id/widget62"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:orientation="vertical"
+>
+
+<TableLayout
+	android:id="@+id/widget33"
+	android:layout_width="wrap_content"
+	android:layout_height="fill_parent"
+	android:orientation="vertical"
+>
+<TableRow
+	android:id="@+id/widget34"
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content"
+	android:orientation="horizontal"
+>
+<TextView
+	android:id="@+id/widget37"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:text="Tuition"
+/>
+<Spinner
+	android:id="@+id/tuitionNameSpinner"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+/>
+</TableRow>
+
+<TableRow
+	android:id="@+id/widget35"
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content"
+	android:orientation="horizontal"
+>
+<TextView
+	android:id="@+id/widget38"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:text="Month"
+/>
+<Spinner
+	android:id="@+id/monthSpinner"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+/>
+</TableRow>
+
+<TableRow
+	android:id="@+id/widget36"
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content"
+	android:orientation="horizontal"
+>
+<TextView
+	android:id="@+id/widget39"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:text="Date"
+/>
+<Spinner
+	android:id="@+id/payDateSpinner"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+/>
+<Spinner
+	android:id="@+id/payMonthSpinner"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+/>
+
+</TableRow>
+<TableRow
+	android:id="@+id/widget46"
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content"
+	android:orientation="horizontal"
+>
+<TextView
+	android:id="@+id/widget49"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:text=""
+/>
+<Spinner
+	android:id="@+id/payYearSpinner"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+/>
+</TableRow>
+</TableLayout>
+<TextView
+	android:id="@+id/widget59"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:text=""
+/>
+<Button
+	android:id="@+id/payToTuitionButton"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:text="Pay"
+	android:onClick="payTuition"
+/>
+</LinearLayout>
+</ScrollView>
