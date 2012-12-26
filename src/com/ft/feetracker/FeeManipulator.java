@@ -52,6 +52,16 @@ public String[] getHistory(){
 	return t;
 }
 
+public String[] getHistory(String tuition){
+	Cursor cur=db.query(FeeDatabaseHelper.FEE_SUBMIT_TABLE,new String[]{FeeDatabaseHelper.ST_COL_MON,FeeDatabaseHelper.ST_COL_DAT},FeeDatabaseHelper.ST_COL_NAM+"=",new String[]{tuition},null,null,null,null);
+	String[] t=new String[cur.getCount()];
+	int c=0;
+	while(cur.moveToNext()){
+		t[c++]=cur.getString(0)+" : "+cur.getString(1);
+	}
+	return t;
+}
+
 public void payTuition(String name, String month, String date){
 	ContentValues val=new ContentValues();
 	val.put(FeeDatabaseHelper.ST_COL_NAM,name);

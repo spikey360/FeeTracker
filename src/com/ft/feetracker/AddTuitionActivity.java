@@ -5,13 +5,11 @@ import android.os.Bundle;
 import android.widget.EditText;
 import android.widget.Toast;
 import android.widget.TextView;
-import android.database.sqlite.SQLiteDatabase;
 import android.view.View;
 
 
 public class AddTuitionActivity extends Activity{
 
-private FeeManipulator fm;
 private EditText name;
 private EditText fee;
 
@@ -23,17 +21,24 @@ public void onCreate(Bundle savedInstanceState){
 	name=(EditText)	findViewById(R.id.editNewTuitionName);
 	fee=(EditText)findViewById(R.id.editNewTuitionFee);
 	
-	//init db
-	fm=new FeeManipulator(this);
-	fm.open();
+	
 }
 
 public void insertTuition(View view){
-	fm.addTuition(name.getText().toString(), Integer.parseInt(fee.getText().toString()),"Tuition");
+	if(MainActivity.fm!=null){
+	//perform validation
+	if (name.getText().toString()==null || fee.getText().toString()==null || name.getText().toString().length()<=0 || name.getText().toString().length()<=0 ){
+		Toast.makeText(getApplicationContext(),"Form fill error",Toast.LENGTH_SHORT).show();
+		return;
+	}
+	MainActivity.fm.addTuition(name.getText().toString(), Integer.parseInt(fee.getText().toString()),"Tuition");
 	//give a toast message
-	Toast.makeText(getApplicationContext(),"Added"+name.getText().toString(),Toast.LENGTH_SHORT).show();
+	Toast.makeText(getApplicationContext(),"Added "+name.getText().toString(),Toast.LENGTH_SHORT).show();
 	name.setText(new String(),TextView.BufferType.EDITABLE);
 	fee.setText(new String(), TextView.BufferType.EDITABLE);
+	}else{
+		System.err.println("Error while accessing db object");
+	}
 }
 
 
