@@ -9,26 +9,23 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     >
-<Button
-	android:id="@+id/refreshButton"
-	android:layout_width="fill_parent"
-	android:layout_height="wrap_content"
-	android:text="Refresh"
-	android:onClick="refreshHistory"
-/>
+
 <TextView
 	android:layout_width="fill_parent"
 	android:layout_height="wrap_content"
 	android:text="History"
 	android:background="#0771b8"
+	android:gravity="center"
 	/>
 
-<ListView
-	android:id="@+id/history"
-	android:layout_width="fill_parent"
-	android:layout_height="400dp"
-	android:background="#ffffff"
-	/>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/history"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:stretchColumns="1"
+    >
+
+</TableLayout>
 
 </LinearLayout>
 </ScrollView>
