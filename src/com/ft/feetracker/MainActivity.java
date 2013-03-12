@@ -10,6 +10,8 @@ import android.widget.TextView;
 import android.widget.ListView;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
+import android.widget.TableLayout;
+import android.widget.TableRow;
 import android.database.sqlite.SQLiteDatabase;
 import android.view.View;
 import android.view.Menu;
@@ -17,13 +19,15 @@ import android.view.MenuItem;
 import android.view.MenuInflater;
 import android.content.Intent;
 import java.util.Calendar;
+import android.graphics.Color;
+
 
 public class MainActivity extends Activity
 {
 
 static FeeManipulator fm;
 
-private ListView history;
+private TableLayout history;
 
 private static String selectedTuition="";
 private static String selectedMonth="";
@@ -38,7 +42,7 @@ private static String selectedMonth="";
         setContentView(R.layout.main);
         
         
-        history=(ListView)findViewById(R.id.history);
+        history=(TableLayout)findViewById(R.id.history);
         
         
         fm=new FeeManipulator(this);
@@ -58,13 +62,25 @@ private static String selectedMonth="";
 
     
     void populateHistory(){
-    	ArrayAdapter<String> ha=(ArrayAdapter<String>)new ArrayAdapter(this,android.R.layout.simple_spinner_dropdown_item);
-        String[] t=fm.getHistory();
+        history.removeAllViews();
+        String[][] t=fm.getHistory();
+        
+        
         for(int i=0;i<t.length;i++){
-        	ha.add(t[i]);
+        	TableRow tr=new TableRow(this);
+        	//tr.setLayoutParams(lp);
+        	TextView tuition=new TextView(this);
+        	tuition.setText(t[i][0]);
+        	TextView paid=new TextView(this);
+        	paid.setText(t[i][1]);
+        	TextView month=new TextView(this);
+        	month.setText(t[i][2]);
+        	tr.addView(tuition);
+        	tr.addView(paid);
+        	tr.addView(month);
+        	history.addView(tr);
         }
-        ha.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        history.setAdapter(ha);
+        
     }
     
     @Override
