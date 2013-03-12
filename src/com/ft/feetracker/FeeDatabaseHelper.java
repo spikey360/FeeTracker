@@ -16,18 +16,21 @@ private static final int DB_VERSION=1;
  static final String TT_COL_NAM="name";
  static final String TT_COL_FEE="fee";
  static final String TT_COL_DESC="description";
+ static final String TT_COL_DEL_STATUS="delStatus";
  static final String ST_COL_ID="pay_id";
  static final String ST_COL_NAM="name";
  static final String ST_COL_MON="month";
  static final String ST_COL_DAT="date";
+ static final String ST_COL_DEL_STATUS="delStatus";
+
 
 public FeeDatabaseHelper(Context con){
 	super(con,DB_NAME,null,DB_VERSION);
 }
 
 public void onCreate(SQLiteDatabase db){
-	String  createTTSQL="create table if not exists "+TUITION_TABLE+" ("+TT_COL_ID+" integer primary key autoincrement, "+TT_COL_NAM+" text not null, "+TT_COL_FEE+" integer not null, "+TT_COL_DESC+" text);";
-	String createSTSQL=" create table if not exists "+FEE_SUBMIT_TABLE+" ("+ST_COL_ID+" integer primary key autoincrement, "+ST_COL_NAM+" text not null, "+ST_COL_MON+" text not null, "+ST_COL_DAT+" text not null"+");";
+	String  createTTSQL="create table if not exists "+TUITION_TABLE+" ("+TT_COL_ID+" integer primary key autoincrement, "+TT_COL_NAM+" text not null, "+TT_COL_FEE+" integer not null, "+TT_COL_DESC+" text,"+TT_COL_DEL_STATUS+" integer not null default 0);";
+	String createSTSQL=" create table if not exists "+FEE_SUBMIT_TABLE+" ("+ST_COL_ID+" integer primary key autoincrement, "+ST_COL_NAM+" text not null, "+ST_COL_MON+" text not null, "+ST_COL_DAT+" text not null,"+ST_COL_DEL_STATUS+" integer not null default 0"+");";
 	db.execSQL(createTTSQL);
 	db.execSQL(createSTSQL);
 }

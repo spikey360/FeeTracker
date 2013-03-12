@@ -42,17 +42,23 @@ public String[] getTuitions(){
 	return t;
 }
 
-public String[] getHistory(){
-	Cursor cur=db.query(FeeDatabaseHelper.FEE_SUBMIT_TABLE,new String[]{FeeDatabaseHelper.ST_COL_NAM,FeeDatabaseHelper.ST_COL_MON,FeeDatabaseHelper.ST_COL_DAT},null,null,null,null,null,null);
-	String[] t=new String[cur.getCount()];
+public String[][] getHistory(){
+	//select only those which have delStatus 0 ie, not deleted
+	Cursor cur=db.query(FeeDatabaseHelper.FEE_SUBMIT_TABLE,new String[]{FeeDatabaseHelper.ST_COL_NAM,FeeDatabaseHelper.ST_COL_MON,FeeDatabaseHelper.ST_COL_DAT},ST_COL_DEL_STATUS+"=",new String[]{"0"},null,null,null,null);
+	String[][] t=new String[cur.getCount()][3];
 	int c=0;
 	while(cur.moveToNext()){
-		t[c++]=cur.getString(0)+" : "+cur.getString(1)+"-"+cur.getString(2);
+		
+		t[c][0]=cur.getString(0);
+		t[c][1]=cur.getString(1);
+		t[c][2]=cur.getString(2);
+		c++;
 	}
 	return t;
 }
 
 public String[] getHistory(String tuition){
+	
 	Cursor cur=db.query(FeeDatabaseHelper.FEE_SUBMIT_TABLE,new String[]{FeeDatabaseHelper.ST_COL_MON,FeeDatabaseHelper.ST_COL_DAT},FeeDatabaseHelper.ST_COL_NAM+"=",new String[]{tuition},null,null,null,null);
 	String[] t=new String[cur.getCount()];
 	int c=0;
@@ -68,6 +74,11 @@ public void payTuition(String name, String month, String date){
 	val.put(FeeDatabaseHelper.ST_COL_MON,month);
 	val.put(FeeDatabaseHelper.ST_COL_DAT,date);
 	long in=db.insert(FeeDatabaseHelper.FEE_SUBMIT_TABLE,null,val);
+}
+
+public void removeTuition(String name){
+	String sql="UPDATE "+FeeDatabaseHelper.TUITION_TABLE+" SET "+FeeDatabaseHelper.TT_COL_DEL_STATUS+" = 1 WHERE "+FeeDatabaseHelper.TT_COL_NAM+" LIKE \'"+name+"\'";
+	db.execSQL(sql);
 }
 
 
